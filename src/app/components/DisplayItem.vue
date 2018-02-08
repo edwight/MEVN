@@ -16,8 +16,9 @@
 					<th>{{item.name}}</th>
 					<th>{{item.price}}</th>
 					<th>
-						<a href="#" class="btn btn-danger">eliminar</a>
-						<a href="#" class="btn btn-dark">actualizar</a>
+						<a href="#" class="btn btn-danger" v-on:click="eliminarItem(item._id)">eliminar</a>
+						<a href="#" class="btn btn-dark" v-on:click="editarItem(item._id)">actualizar</a>
+						<a href="#" class="btn btn-primary" v-on:click="mostrarItem(item._id)">Mostar</a>
 					</th>
 				</tr>
 			</tbody>
@@ -43,6 +44,26 @@
 					//console.log(res.data);
 					this.items = res.data;
 				});
+			},
+			eliminarItem(id){
+				const response = confirm('esta seguro que lo quieres eliminar ?');
+				if(response){
+					var url = 'items/delete/'+id;
+					alert(url);
+					this.axios.get(url)
+					.then(res=>{
+						this.items.splice(id, 1);
+					})
+					.catch(err=>console.log(err));
+				}
+				
+			},
+			editarItem(id){
+				this.$router.push({ name: 'EditItem', params: { ItemId: id }})
+				//this.$router.replace({name:'EditItem'})
+			},
+			mostrarItem(id){
+				this.$router.push({name:'ShowItem', params:{ItemId:id }})
 			}
 		}
 	}

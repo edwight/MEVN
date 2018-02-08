@@ -15,6 +15,17 @@ itemRoutes.route('/add').post((req, res, next) => {
     });
   });
 
+itemRoutes.route('/:id').get(function(req,res,next){
+	var id = req.params.id;
+	Item.findById(id, function(err,item){
+		if(err){
+			res.json(err);
+		}
+		else{
+			res.json(item);
+		}
+	})
+});
 // Defined get data(index or listing) route
 itemRoutes.route('/').get(function (req, res) {
   Item.find(function (err, items){

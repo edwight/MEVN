@@ -10,6 +10,8 @@ import App from './App.vue';
 
 import DisplayItem from './components/DisplayItem.vue';
 import CreateItem from './components/CreateItem.vue';
+import EditItem from './components/EditItem.vue';
+import ShowItem from './components/ShowItem.vue';
 const routes = [
   {
     name: 'DisplayItem',
@@ -20,6 +22,16 @@ const routes = [
   	name: 'CreateItem',
   	path: '/create/item',
   	component:CreateItem
+  },
+  {
+  	name: 'EditItem',
+  	path: '/edit/item/:ItemId',
+  	component:EditItem
+  },
+  {
+  	name:'ShowItem',
+  	path:'/show/:ItemId',
+  	component:ShowItem
   },
   ]
 const router = new VueRouter({ mode: 'history', routes: routes });
