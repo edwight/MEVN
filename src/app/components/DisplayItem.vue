@@ -1,6 +1,9 @@
 <template lang="html">
 	<div>
 		<h2>displayItems</h2>
+		<div class="form-group">
+			<input type="text" name="busqueda" v-model="busqueda" class="form-control">
+		</div>
 		<table class="table table-hovered table-border">
 			<thead>
 				<tr>
